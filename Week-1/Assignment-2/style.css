@@ -127,8 +127,13 @@ img {
   }
 
   .main-header {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+  }
+
+  img {
+    margin-right: auto;
+    height: 30px;
   }
 
   .row {
