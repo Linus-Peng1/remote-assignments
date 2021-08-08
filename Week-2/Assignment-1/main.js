@@ -1,10 +1,21 @@
 function max(numbers) {
-  numbers.sort().reverse()
-  return numbers[0]
+  let maxNumber = numbers[0]
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] > maxNumber) {
+      maxNumber = numbers[i]
+    }
+  }
+  return maxNumber
 }
 
 function findPosition(numbers, target) {
-  return numbers.indexOf(target)
+  let position
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] === target) {
+      return position = i
+    }
+  }
+  return position = -1
 }
 
 console.log(max([1, 2, 4, 5])); // should print 5
