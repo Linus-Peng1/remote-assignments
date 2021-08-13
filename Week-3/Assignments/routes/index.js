@@ -24,4 +24,15 @@ router.get('/data', (req, res) => {
   res.render('index', { message })
 })
 
+router.get('/myName', (req, res) => {
+  const name = req.cookies.name
+  res.render('myName', { name })
+})
+
+router.get('/trackName', (req, res) => {
+  res.cookie('name', req.query.name)
+  const name = req.query.name
+  res.redirect('/myName')
+})
+
 module.exports = router
