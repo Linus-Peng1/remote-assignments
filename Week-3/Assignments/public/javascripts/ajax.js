@@ -1,8 +1,15 @@
 const xhr = new XMLHttpRequest()
+
 xhr.onreadystatechange = function () {
   if (xhr.readyState === 4) {
-    document.getElementById('ajax').innerHTML = xhr.responseText
+    const message = xhr.responseText
+    document.querySelector('.ajaxResponse').innerHTML = `<p>${message}</p>`
   }
 }
-xhr.open('GET', '../sum.html')
-xhr.send()
+
+function sendAjax() {
+  const input = document.getElementById('numberInput')
+  const number = input.value
+  xhr.open('GET', `http://localhost:3000/data?number=${number}`)
+  xhr.send()
+}

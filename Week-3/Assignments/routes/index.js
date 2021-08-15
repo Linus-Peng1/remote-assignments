@@ -1,6 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
+// caculate 1 + 2 + 3 + ...... + n = ?
+function Gauss(number) {
+  return (number + 1) * number / 2
+}
+
 router.get('/', (req, res) => {
   res.render('index')
 })
@@ -15,13 +20,11 @@ router.get('/data', (req, res) => {
   } else if (!number) {
     message = 'Wrong Parameter'
   } else {
-    for (let i = 0; i <= number; i++) {
-      total += i
-    }
+    total = Gauss(number)
     message = `total = ${total}`
   }
-
-  res.render('index', { message })
+  // res.render('index', { message })
+  res.send(message)
 })
 
 router.get('/myName', (req, res) => {
@@ -31,7 +34,6 @@ router.get('/myName', (req, res) => {
 
 router.get('/trackName', (req, res) => {
   res.cookie('name', req.query.name)
-  const name = req.query.name
   res.redirect('/myName')
 })
 
